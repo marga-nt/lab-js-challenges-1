@@ -166,4 +166,50 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let maxFila = 0;
+  let maxColumna = 0;
+  
+  //Busco la multiplicación máxima por fila, así qeu voy recorriendo la matriz fila a fila (j).
+  //en cada fila hago las multiplicaciones de los 4 elementos adyacentes y busco su maximo (maxAuxF).
+  //luego comparo el maxAux con el máximo almacenado de una multiplicación por filas y me qeudo con el mayor (maxFila)
+  for (let j = 0; j < matrix.length; j++) {
+    const fila = matrix[j];
+ 
+    for (i = 0; i < fila.length-3; i++) {
+      let filaMultiplicada = [];
+      let maxAuxF = 0;
+      let aux = fila[i]*fila[i+1]*fila[i+2]*fila[i+3];
+      filaMultiplicada.push(aux);
+      maxAuxF = Math.max(filaMultiplicada);
+      if (maxAuxF > maxFila) {
+        maxFila = maxAuxF;
+      };
+    };
+
+  };
+    
+
+  //Para cada columna, primero la convierto en un array, y luego hago como en los arrays por filas de más arriba.
+  //Guardo en maxAuxC y en maxColumna.
+  const numColum = matrix[0].length;
+
+  for (let j = 0; j < numColum; j++) {
+    const columna = [];
+
+    for (let i=0; i < matrix.length; i++) {
+      columna.push(matrix[i][j]);
+    };
+
+    for (i = 0; i < columna.length-3; i++) {
+      let columnaMultiplicada = [];
+      let maxAuxC = 0;
+      columnaMultiplicada.push(columna[i]*columna[i+1]*columna[i+2]*columna[i+3]);
+      maxAuxC = Math.max(columnaMultiplicada);
+      if (maxAuxC > maxColumna) {
+        maxColumna = maxAuxC;
+      };
+    };
+  };
+  return Math.max(maxFila, maxColumna);
+}
