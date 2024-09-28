@@ -16,8 +16,9 @@ const repeatedWords = [
 function howManyTimes(repeatedWords, word) {
   let count = 0;
   for (let i = 0; i < repeatedWords.length; i++) {
-    if (repeatedWords[i] === word) {
-      count ++;
+    const palabra = repeatedWords[i];
+    if (word === palabra) {
+      count++;
     }
   }
   return count;
@@ -27,8 +28,17 @@ function howManyTimes(repeatedWords, word) {
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+  if (number === 0) {
+    return [];
+  }
 
+  const numbers = [];
+  for (let i = 0; i <= number; i++) {
+    numbers.push(i);
+  }
+  return numbers;
+}
 
 
 
