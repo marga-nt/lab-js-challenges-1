@@ -111,7 +111,33 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+  if (duplicateWords.length < 1) {
+    return null;
+  }
+
+  const arrayUnicos = [];
+
+  for (let i = 0; i < duplicateWords.length; i++) {
+    const palabra = duplicateWords[i];
+    let isRepe = false;
+
+    for (let j = 0; j < arrayUnicos.length; j++) {
+      const otraPalabra = arrayUnicos[j];
+
+      if (palabra === otraPalabra) {
+        isRepe = true;
+        break;
+      }
+    }
+
+    if (!isRepe) {
+      arrayUnicos.push(palabra);
+    }
+  }
+
+return arrayUnicos;
+}
 
 
 
